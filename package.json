@@ -57,7 +57,7 @@
       "setupFiles": [
         "./jest.setup.js"
       ],
-	  "testEnvironment": "node",
+      "testEnvironment": "node",
       "^.+\\.tsx?$": "ts-jest"
     }
   }
