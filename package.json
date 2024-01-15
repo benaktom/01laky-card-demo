@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon --watch src/index.ts --exec ts-node src/index.ts",
-    "test": "jest --config jest.config.js"
+    "tests": "jest --config jest.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
