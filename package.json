@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "card_demo",
   "author": "Ladislav Kostolny <01laky@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "nodemon --watch src/index.ts --exec ts-node src/index.ts",
     "tests": "jest --config jest.config.js"
