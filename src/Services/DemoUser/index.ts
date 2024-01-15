@@ -23,7 +23,6 @@ export const initializeAuthUser = async () => {
 		const email = process.env.EMAIL as string;
 		const password = process.env.PASSWORD as string;
 		const hashedPassword = await bcrypt.hash(password, 10);
-
 		const user = users.find(usr => usr.email === email);
 		if (!user) {
 			const newUser = {

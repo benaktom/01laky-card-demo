@@ -11,7 +11,7 @@ describe('Authentication Middleware Tests', () => {
     beforeEach(() => {
         app = express();
         app.use(authMiddleware);
-        app.get('/protected', (req: Request, res: Response) => res.status(200).json({ success: true }));
+        app.get('/protected', (_: Request, res: Response) => res.status(200).json({ success: true }));
     });
 
     it('Should allow access with a valid token', async () => {

@@ -5,8 +5,8 @@ import baseRouter from './index';
 const app = express();
 app.use(baseRouter);
 
-describe('Bas Routern Tests', () => {
-    it('should respond with "Alive" for GET /', async () => {
+describe('Base Router Tests', () => {
+    it('Should respond with "Alive" for GET /', async () => {
         const response = await request(app)
             .get('/')
             .expect(200);

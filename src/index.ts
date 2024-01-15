@@ -12,15 +12,13 @@ import { initializeAuthUser } from './Services/DemoUser';
 dotenv.config();
 
 const Server = express();
-const PORT = Number(process.env.PORT);
+const PORT = parseInt(process.env.PORT as string);
 
 Server.use(urlencoded({ extended: false }));
 Server.use(json());
 Server.use(cookieParser());
 
-Server.use(cors({
-    origin: '*',
-}));
+Server.use(cors({ origin: '*' }));
 
 Server.use('/auth', authRouter);
 Server.use(baseRouter);
