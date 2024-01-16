@@ -3,8 +3,6 @@ import bcrypt from 'bcryptjs';
 
 import { db } from '../Db';
 
-const filePath = join(__dirname, './users.json');
-
 export const initializeAuthUser = async () => {
 	try {
 	  const email = process.env.EMAIL as string;
