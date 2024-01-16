@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import { IRequestUser } from './interfaces';
+import { IUser } from './interfaces';
 
-export const validateLogin = (data: IRequestUser) => {
+export const validateLogin = (data: IUser) => {
     const schema = Joi.object({
         email: Joi.string()
             .min(6)

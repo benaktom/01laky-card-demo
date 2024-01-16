@@ -1,4 +1,4 @@
-export interface IRequestUser {
+export interface IUser {
     password: string;
     email: string;
 }
