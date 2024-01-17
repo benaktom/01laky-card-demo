@@ -16,10 +16,13 @@ dotenv.config();
 const Server = express();
 const PORT = parseInt(process.env.PORT as string);
 
+// [CR] je nutné používat urlencoded?
 Server.use(urlencoded({ extended: false }));
 Server.use(json());
+// [CR] je nutné používat cookie-parser?
 Server.use(cookieParser());
 Server.use(cors({ origin: '*' }));
+// [CR] hodil by se tu nějaký request logger
 
 Server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 Server.use('/auth', authRouter);

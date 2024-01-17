@@ -75,9 +75,11 @@ authRouter.post('/login', async (request: Request, response: Response) => {
 	try {
 		const { error } = validateLogin(requestUser);
 		if (error) {
+			// [CR] asi by bylo vhodný napsat, co se nepovedlo, nebo je to záměr?
 			return response.status(400).send('Some error');
 		}
 
+		// [CR] je nutné používat callbacky?
 		db.get('SELECT * FROM users WHERE email = ?', [requestUser.email], async (err, user: IUser) => {
 			if (err) {
 				return response.status(500).send('Something went wrong');
@@ -92,6 +94,7 @@ authRouter.post('/login', async (request: Request, response: Response) => {
 				return response.status(401).send('Invalid password');
 			}
 
+			// [CR] co když není definovaná proměnná prostředí?
 			const token = jsonwebtoken.sign({
 				email: user.email,
 			}, process.env.TOKEN_SECRET as string);
@@ -99,6 +102,7 @@ authRouter.post('/login', async (request: Request, response: Response) => {
 			return response.status(200).send({ token });
 		});
 	} catch (error) {
+		// [CR] chtělo by to nějaký log
 		return response.status(500).send('Something went wrong');
 	}
 });

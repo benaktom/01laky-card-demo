@@ -8,6 +8,7 @@ export interface IStateResponse {
     state_description: string;
 }
 
+// [CR] proč je něco camelCase a něco snake_case?
 export interface ISecuredCardResponse {
     cardValidityEnd: string;
     state_id: number;

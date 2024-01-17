@@ -11,6 +11,7 @@ class Proxy {
     private API_URI: string;
 
     constructor() {
+        // [CR] co když není definovaná proměnná prostředí?
         this.API_URI = process.env.APIARY_URI as string;
     }
 
@@ -31,6 +32,8 @@ class Proxy {
     ): Promise<T> {
         const proxyRequestConfig: AxiosRequestConfig = this.getProxyConfig();
 
+        // [CR] nebylo by lepší použít async/await?
+        // [CR] co když se nepovede získat data?
 		return Axios.get<T>(`${this.API_URI}/${cardNumber}/${path}`, proxyRequestConfig)
 			.then((response: AxiosResponse<T>) => {
 				return response.data;

@@ -1,4 +1,5 @@
 export const formatValidityDate = (validityDate: string) => {
+    // [CR] co když je datum nevalidní?
     const dateObject = new Date(validityDate);
     
     const day = String(dateObject.getDate()).padStart(2, '0');

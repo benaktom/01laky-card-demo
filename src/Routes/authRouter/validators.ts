@@ -9,7 +9,7 @@ export const validateLogin = (data: IUser) => {
             .required()
             .email(),
         password: Joi.string()
-            .min(6)
+            .min(6) // [CR] proč 6?
             .required()
     });
     return schema.validate(data);

@@ -54,7 +54,10 @@ const proxy = new Proxy();
  *         bearerFormat: JWT
  */
 cardRouter.get('/card-secured', authMiddleware, async (request: Request, response: Response) => {
+    // [CR] proč /card-secured?
+    // [CR] ze zadání měl být cardNumber url parametr?
     const cardNumber = request.query.cardNumber as string;
+    // [CR] opravdu to musí být kreditní karta?
     const { error } = cardNumberSchema.validate(cardNumber);
     if (error) {
         return response.status(400).send(`Invalid credit card number: ${error.message}`);
@@ -66,11 +69,22 @@ cardRouter.get('/card-secured', authMiddleware, async (request: Request, respons
         const securedCardResponse: ISecuredCardResponse = {
             cardValidityEnd, ... stateResponse,
         }
+
+        // [CR] návratová hodnota neodpovídá dokumentaci, vrátilo mi to:
+        /*
+            {
+                "cardValidityEnd": "12.08.2020",
+                "state_id": 100,
+                "state_description": "Aktivní v držení klienta"
+            }
+        */
+
         return response.status(200).send(securedCardResponse);
     } catch (error) {
+        // [CR] asi by to chtělo nějaký log
         return response.status(500).send('Something wrong!');
     }
-    
+    // [CR] škoda, že zrovna k tomuto chybí testy
 });
 
 export default cardRouter;
